@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* LOADER */
+.loader {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+}
+
+/* TOPBAR */
+.topbar {
+  background: #0a1f2c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  font-size: 14px;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: white;
+}
+
+.navbar img {
+  height: 50px;
+}
+
+.navbar nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: black;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url("/hero.jpg") center/cover no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 30, 60, 0.6);
+}
+
+.heroContent {
+  position: relative;
+  color: white;
+  top: 40%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.heroBtns button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background: #2bb673;
+  border: none;
+  color: white;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid white;
+}
+
+/* SECTIONS */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.sectionDark {
+  padding: 60px 20px;
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 30px;
+  background: #f5f5f5;
+}
+
+/* CLIENTS */
+.clients {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* CTA */
+.cta {
+  background: #2bb673;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+/* FOOTER */
+.footer {
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar nav {
+    display: none;
+  }
+}

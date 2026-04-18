@@ -1,0 +1,537 @@
+/* ========================================= */
+/* --- NAVBAR WRAPPER & CORE --- */
+/* ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 0;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative; 
+}
+
+/* --- LOGO --- */
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 65px;
+  object-fit: contain;
+}
+
+/* ========================================= */
+/* --- DESKTOP NAVIGATION MENU --- */
+/* ========================================= */
+.navMenu {
+  display: flex;
+  list-style: none;
+  gap: 36px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navItem {
+  padding-bottom: 25px; 
+  margin-bottom: -25px; 
+}
+
+.navLink {
+  color: #556970;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.navLink:hover, .navLink.active {
+  color: #116859;
+}
+
+.navLink.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background-color: #369c8a;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(54, 156, 138, 0.8);
+}
+
+.dropdownIcon {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: -2px; 
+}
+
+.hasDropdown:hover .dropdownIcon {
+  transform: rotate(180deg);
+}
+
+/* --- MEGA MENU (DESKTOP) --- */
+.megaMenuWrapper {
+  position: absolute;
+  top: 100%; 
+  left: 50%; 
+  transform: translateX(-50%) translateY(15px); 
+  width: 1200px; 
+  max-width: 90vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 100;
+  padding-top: 25px; 
+}
+
+.hasDropdown:hover .megaMenuWrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.megaMenu {
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #f0f0f0;
+  border-radius: 12px; 
+  padding: 40px;
+  /* Added properties to handle vertical scrolling */
+  max-height: 70vh; 
+  overflow-y: auto; 
+}
+
+/* Custom Scrollbar for Mega Menu */
+.megaMenu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.megaMenu::-webkit-scrollbar-track {
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin: 10px 0; /* Keeps scrollbar away from the very edges */
+}
+
+.megaMenu::-webkit-scrollbar-thumb {
+  background: #cdd6d4;
+  border-radius: 8px;
+}
+
+.megaMenu::-webkit-scrollbar-thumb:hover {
+  background: #116859;
+}
+
+.megaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 30px;
+}
+
+.megaCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.megaTitle {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.megaTitleLink {
+  font-size: 16px;
+  font-weight: 800;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.megaTitleLink:hover {
+  color: #116859;
+}
+
+.megaList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
+.megaItem {
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.4;
+  display: block;
+  padding: 8px 12px;
+  margin-left: -12px; 
+  border-radius: 8px;
+}
+
+.megaItem:hover {
+  color: #116859;
+  background-color: rgba(17, 104, 89, 0.05); 
+  transform: translateX(6px); 
+}
+
+.moreLink {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f58220; 
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.moreLink:hover {
+  color: #d16b15;
+  transform: translateX(4px);
+}
+
+.megaColAll {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.viewAllBtn {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 1.5px solid #116859;
+  color: #116859;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: max-content;
+}
+
+.viewAllBtn:hover {
+  background-color: #116859;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(17, 104, 89, 0.2);
+}
+
+/* --- CTA BUTTON --- */
+.ctaContainer {
+  display: flex;
+  align-items: center;
+}
+
+.quoteBtn {
+  background: linear-gradient(90deg, #f08931 0%, #369c8a 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(54, 156, 138, 0.35);
+}
+
+.quoteBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(54, 156, 138, 0.45);
+}
+
+/* ========================================= */
+/* --- MOBILE SIDEBAR & HAMBURGER (NEW) --- */
+/* ========================================= */
+
+.hamburgerBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #1a1e23;
+  z-index: 1001;
+}
+
+.sidebarOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1005;
+}
+
+.sidebarOverlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Hidden off-screen */
+  width: 85vw;
+  max-width: 350px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+  z-index: 1010;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  right: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #1a1e23;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileNav {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobileNavLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #1a1e23;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.mobileNavLink.active {
+  color: #116859;
+}
+
+/* Mobile Products Accordion */
+.mobileProductsWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileProductsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #1a1e23;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.mobileProductsHeader.active {
+  color: #116859;
+}
+
+.mobileAccordionIcon {
+  transition: transform 0.3s ease;
+}
+
+.mobileAccordionIcon.open {
+  transform: rotate(180deg);
+}
+
+.mobileProductsContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: #fafafa;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.mobileProductsContent.open {
+  max-height: 1500px; /* Increased to fit the longer new content list securely */
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+.mobileCategoryTitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: #333;
+  margin: 15px 0 8px 0;
+  text-decoration: none;
+  display: block;
+}
+
+.mobileCategoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobileItem {
+  color: #666;
+  font-size: 13px;
+  text-decoration: none;
+  display: block;
+  padding-left: 10px;
+  border-left: 2px solid transparent;
+}
+
+.mobileItem:hover {
+  color: #116859;
+  border-left: 2px solid #116859;
+}
+
+.mobileSidebarCTA {
+  margin-top: auto;
+  padding: 20px;
+  display: none; /* Shown only on small screens */
+}
+
+/* ========================================= */
+/* --- RESPONSIVE BREAKPOINTS --- */
+/* ========================================= */
+@media (max-width: 1200px) {
+  .megaMenuWrapper { width: 960px; }
+}
+
+@media (max-width: 1024px) {
+  .navMenu { gap: 24px; }
+  .megaMenuWrapper { width: 800px; }
+  .megaGrid { grid-template-columns: repeat(3, 1fr); }
+  .container { padding: 0 20px; }
+}
+
+/* --- MOBILE LAYOUT BREAKPOINT --- */
+@media (max-width: 900px) {
+  /* Hide Desktop Elements */
+  .navMenu { display: none; }
+  .ctaContainer { display: none; } /* Move CTA to sidebar on mobile */
+  
+  /* Show Mobile Elements */
+  .hamburgerBtn { display: block; }
+  .mobileSidebarCTA { display: block; }
+  
+  /* Adjust Logo */
+  .logo { height: 50px; }
+}
+
+/* ========================================= */
+/* --- GLOBAL/WEBKIT SCROLLBAR --- */
+/* ========================================= */
+/* Customize scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; 
+}
+
+/* ========================================= */
+/* --- SCROLL INDICATOR ARROW --- */
+/* ========================================= */
+.scrollIndicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #0c8350; /* Your brand's green color */
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Prevents the arrow from blocking clicks on items underneath it */
+  animation: bounce 2s infinite;
+  z-index: 10;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-8px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-4px) translateX(-50%);
+  }
+}

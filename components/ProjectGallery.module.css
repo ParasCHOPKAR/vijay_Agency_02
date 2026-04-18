@@ -1,0 +1,200 @@
+/* ================= WRAPPER ================= */
+.wrapper {
+  /* Needs to be 100vh so it perfectly fills the screen while pinned */
+  height: 100vh;
+  width: 100%;
+  background: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= HEADING ================= */
+.headingWrapper {
+  text-align: center;
+  margin-bottom: 60px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.heading {
+  font-size: 52px;
+  font-weight: 900;
+  color: #0c1c18;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.heading span {
+  color: #f58220;
+  position: relative;
+  display: inline-block;
+}
+
+.heading span::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: rgba(245, 130, 32, 0.2);
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+.subheading {
+  font-size: 16px;
+  color: #666;
+}
+
+/* ================= SLIDER & TRACK ================= */
+.slider {
+  width: 100%;
+  margin-top: 100px; /* Pushes slider down below the absolute heading */
+  padding-left: 5%; /* Initial offset so the first card isn't touching the screen edge */
+  overflow: visible; /* Let the track bleed off the edges */
+}
+
+.track {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  /* Will-change optimizes hardware acceleration for smooth scrolling */
+  will-change: transform; 
+}
+
+/* ================= CARD DESIGN ================= */
+.card {
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  /* Fixes Safari border-radius overflow issues */
+  -webkit-transform: translateZ(0); 
+}
+
+/* Image & Hover Effect */
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.1) rotate(1deg);
+}
+
+/* Dark gradient at the bottom so white text is readable */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 28, 24, 0.9) 0%, rgba(12, 28, 24, 0.2) 50%, transparent 100%);
+  transition: opacity 0.4s ease;
+  opacity: 0.8;
+}
+
+.card:hover .gradientOverlay {
+  opacity: 1; /* Darkens slightly on hover to focus on the text */
+}
+
+/* ================= CARD CONTENT (Overlaid text) ================= */
+.cardContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 35px 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f58220; /* Brand Orange */
+  margin-bottom: 8px;
+  transform: translateY(10px);
+  transition: 0.4s ease;
+}
+
+.client {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  transform: translateY(10px);
+  transition: 0.4s ease;
+  transition-delay: 0.05s;
+}
+
+/* Float up effect on hover */
+.card:hover .location,
+.card:hover .client {
+  transform: translateY(0);
+}
+
+/* Premium Arrow Button */
+.arrowBox {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .arrowBox {
+  background: #f58220; /* Orange */
+  border-color: #f58220;
+  transform: scale(1.1) rotate(45deg);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .heading { font-size: 42px; }
+  .card { width: 340px; height: 440px; }
+  .track { gap: 30px; }
+}
+
+@media (max-width: 768px) {
+  .headingWrapper { top: 60px; }
+  .heading { font-size: 36px; }
+  .card { width: 280px; height: 380px; }
+  .track { gap: 20px; }
+  .client { font-size: 22px; }
+}

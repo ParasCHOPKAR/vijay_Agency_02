@@ -1,0 +1,230 @@
+/* ================= WRAPPER ================= */
+.wrapper {
+  width: 100%;
+  padding: 120px 0;
+  /* Upgraded the warm background to a very soft, premium linear gradient */
+  background: linear-gradient(135deg, #fdfbf9 0%, #f6e3da 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* ================= LEFT: IMAGE STACK ================= */
+.left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.imageStack {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 550px;
+}
+
+.large {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.small {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 8px solid #fdfbf9; /* Creates a cutout effect over the large image */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+}
+
+/* Floating Trust Badge */
+.floatingBadge {
+  position: absolute;
+  top: 40px;
+  left: -20px;
+  background: #0f4c3a; /* Dark Green */
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(15, 76, 58, 0.3);
+  z-index: 5;
+}
+
+.badgeNumber {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.badgeText {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+/* ================= RIGHT: CONTENT & GRID ================= */
+.right {
+  flex: 1.2;
+}
+
+.subtitle {
+  color: #f58220; /* Orange */
+  font-weight: 800;
+  letter-spacing: 4px;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.title {
+  font-size: 52px;
+  line-height: 1.1;
+  font-weight: 900;
+  color: #0c1c18;
+  margin-bottom: 45px;
+  letter-spacing: -1px;
+}
+
+.title span {
+  color: #0f4c3a;
+  position: relative;
+}
+
+.title span::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: rgba(245, 130, 32, 0.2);
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+/* ================= GRID ================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Premium Card Design */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 18px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(245, 130, 32, 0.1);
+  border-color: rgba(245, 130, 32, 0.2);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(15, 76, 58, 0.1);
+  color: #0f4c3a;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: 0.4s ease;
+}
+
+.iconWrapper svg {
+  width: 14px;
+  height: 14px;
+}
+
+.card:hover .iconWrapper {
+  background: #f58220;
+  color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cardText {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardText {
+  color: #0f4c3a;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .title { font-size: 42px; }
+  .imageStack { height: 450px; }
+  .grid { gap: 15px; }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 60px;
+  }
+
+  .left { width: 100%; }
+  
+  .imageStack {
+    height: 500px;
+    max-width: 600px;
+  }
+
+  .title span::after { left: 50%; transform: translateX(-50%) skewX(-15deg); width: 80%; }
+  
+  .card { text-align: left; }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .imageStack { height: 400px; }
+  .floatingBadge { width: 90px; height: 90px; top: 10px; }
+  .badgeNumber { font-size: 18px; }
+  .title { font-size: 36px; }
+}

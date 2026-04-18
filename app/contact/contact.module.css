@@ -1,0 +1,281 @@
+/* ================= VARIABLES ================= */
+.wrapper {
+  --primary-green: #0D4732; /* Derived from your heading text */
+  --accent-orange: #f58220; /* Derived from your buttons */
+  --bg-light: #f8fafc;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  
+  padding-top: 80px;
+  background: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ================= HERO ================= */
+/* ================= HERO ================= */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  /* 1. Linear gradient adds a dark green overlay (derived from your #0D4732 hex) 
+       so the white text remains readable. Change 0.85 to adjust opacity.
+    2. The url() points directly to the public folder.
+  */
+  background-image: 
+    /* linear-gradient(rgba(13, 71, 50, 0.85), rgba(13, 71, 50, 0.00)),  */
+    url('/contact_hero_01.jpg');
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Your existing ::after block will perfectly overlay its subtle SVG pattern on top of the image! */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('data:image/svg+xml;utf8,<svg opacity="0.05" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23ffffff" stroke-width="2"/></svg>') repeat;
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+  display: flex;
+  gap: 40px;
+  padding: 0 5%;
+  max-width: 1200px;
+  margin: -60px auto 0; /* Pulls container up over the green hero */
+  position: relative;
+  z-index: 10;
+}
+
+/* ================= INFO CARD ================= */
+.info {
+  flex: 1;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-top: 5px solid var(--primary-green);
+}
+
+.info h2 {
+  color: var(--primary-green);
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.iconBox {
+  background: var(--bg-light);
+  color: var(--accent-orange);
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconBox svg {
+  width: 24px;
+  height: 24px;
+}
+
+.detailItem strong {
+  display: block;
+  color: var(--text-dark);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.detailItem p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* SOCIAL MEDIA */
+.social {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.social span {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 15px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 15px;
+}
+
+.socialCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-light);
+  color: var(--primary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.socialCircle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.socialCircle:hover {
+  background: var(--accent-orange);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* ================= FORM ================= */
+.form {
+  flex: 1.2;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-top: 5px solid var(--accent-orange);
+}
+
+.form h3 {
+  color: var(--text-dark);
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  outline: none;
+  font-size: 15px;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+/* FOCUS STATE */
+.form input:focus,
+.form textarea:focus {
+  border-color: var(--primary-green);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(13, 71, 50, 0.1);
+}
+
+/* BUTTON */
+.submitBtn {
+  width: 100%;
+  background: var(--accent-orange);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+/* HOVER */
+.submitBtn:hover {
+  background: #e06b0d; /* Slightly darker orange */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 130, 32, 0.25);
+}
+
+/* ================= MAP ================= */
+.map {
+  margin-top: 60px;
+  padding: 0 5% 80px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  filter: grayscale(10%) contrast(105%); /* Subtly styles the map to look more premium */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    margin-top: -30px;
+  }
+
+  .hero {
+    padding: 80px 20px 60px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}

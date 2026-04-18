@@ -1,0 +1,270 @@
+/* ========================================= */
+/* --- HERO SECTION SETUP --- */
+/* ========================================= */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa; 
+  background-image: url('/hero-background.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  padding-top: 80px; 
+  overflow: hidden; 
+}
+
+/* ========================================= */
+/* --- CONTAINER --- */
+/* ========================================= */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  gap: 30px; 
+}
+
+/* ========================================= */
+/* --- LEFT CONTENT --- */
+/* ========================================= */
+.content {
+  width: 40%; /* ⬇️ Decreased from 50% */
+  z-index: 2;
+}
+
+.title {
+  font-family: 'Inter', sans-serif; 
+  font-size: clamp(1.8rem, 4vw, 4rem); /* Slightly scaled down to fit the smaller width */
+  font-weight: 800;
+  color: #1a1e23; 
+  line-height: 1.05; 
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  color: #116859; 
+}
+
+.descriptionContainer {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem); 
+  color: #555; 
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 450px;
+}
+
+/* ========================================= */
+/* --- BUTTONS --- */
+/* ========================================= */
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap; 
+}
+
+.primaryBtn {
+  background: linear-gradient(90deg, #e68d3f 0%, #4db093 100%);
+  color: #ffffff;
+  border: none;
+  padding: 18px 35px; 
+  font-size: 14px; 
+  font-weight: 700;
+  border-radius: 50px; 
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+.iconBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px; 
+  height: 55px;
+  background-color: #116859;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(17, 104, 89, 0.2);
+}
+
+.iconBtn:hover {
+  background-color: #0d4239;
+  transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* --- RIGHT SIDE VISUALS --- */
+/* ========================================= */
+.visualsWrapper {
+  width: 60%; /* ⬆️ Increased from 50% to give the image more space */
+  position: relative;
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.imageInnerWrapper {
+  position: relative;
+  width: 135%; /* Since wrapper is bigger, this makes the image massive */
+  max-width: 1100px; /* ⬆️ Increased cap */
+  right: -8%; 
+}
+
+/* CHANGING IMAGE SHADOW ON HOVER */
+.houseImage {
+  width: 100%;
+  height: auto; 
+  cursor: pointer;
+  filter: drop-shadow(20px 40px 50px rgba(0,0,0,0.15));
+  transition: filter 0.3s ease;
+}
+
+.houseImage:hover {
+  filter: drop-shadow(20px 40px 50px rgba(17, 104, 89, 0.3)); 
+}
+
+/* ========================================= */
+/* --- BRACKETED LABELS --- */
+/* ========================================= */
+.label {
+  position: absolute;
+  font-size: clamp(10px, 1.2vw, 13px); 
+  font-weight: 800;
+  color: #0d4239;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 5;
+  white-space: nowrap; 
+}
+
+/* ⬆️ ALL LABELS LIFTED UP */
+.labelTile { 
+  top: 15%; /* Shifted up from 32% */
+  left: -2%; 
+}
+
+.labelMetal { 
+  top: -2%; /* Shifted up from 6% */
+  right: 20%; 
+}
+
+.labelLight { 
+  top: 25%; /* Shifted up from 42% */
+  right: -5%; 
+}
+
+.labelDark {
+  position: absolute;
+  background-color: #1a1e23;
+  color: #ffffff;
+  padding: 12px 18px;
+  font-size: clamp(9px, 1vw, 11px);
+  font-weight: 700;
+  border-radius: 4px;
+  bottom: 32%; /* ⬆️ Shifted up (increased bottom value) from 25% */
+  right: -4%;  
+  text-transform: uppercase;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* ========================================= */
+/* --- RESPONSIVE QUERIES --- */
+/* ========================================= */
+
+/* TABLET (Landscape & Portrait) */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .content, .visualsWrapper {
+    width: 100%; /* Resets to full width when stacked */
+  }
+  
+  .descriptionContainer {
+    margin: 0 auto 30px;
+  }
+  
+  .buttonGroup {
+    justify-content: center;
+  }
+
+  .imageInnerWrapper {
+    width: 90%; 
+    right: 0;
+    margin-top: 40px; 
+  }
+
+  /* Reset label positions slightly for stacked view so they don't clip */
+  .labelTile { left: 0%; top: 20%; }
+  .labelLight { right: 0%; top: 30%; }
+  
+  .labelDark {
+    padding: 10px 14px;
+    right: 5%;
+    bottom: 35%;
+  }
+}
+
+/* MOBILE (Standard) */
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px; 
+  }
+
+  .imageInnerWrapper {
+    width: 100%;
+  }
+
+  .labelMetal { top: -5%; right: 10%; } 
+  .labelTile { top: 10%; left: 5%; }
+  .labelLight { top: 25%; right: 5%; }
+}
+
+/* SMALL MOBILE (Phones) */
+@media (max-width: 480px) {
+  .buttonGroup {
+    flex-direction: column; 
+    width: 100%;
+  }
+
+  .primaryBtn {
+    width: 100%; 
+    padding: 15px 20px;
+  }
+
+  .iconBtn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .label {
+    display: none; 
+  }
+
+  .labelDark {
+    display: none;
+  }
+}

@@ -1,0 +1,225 @@
+/* ================= WRAPPER ================= */
+.wrapper {
+  padding: 120px 5%;
+  background: #fdfdfd; /* Clean, modern white */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= HEADING ================= */
+.headerWrapper {
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 52px;
+  font-weight: 900;
+  color: #0c1c18;
+  letter-spacing: -1px;
+  margin-bottom: 15px;
+}
+
+.heading span {
+  color: #f58220;
+  position: relative;
+  display: inline-block;
+}
+
+.heading span::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: rgba(245, 130, 32, 0.2);
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+
+.subheading {
+  font-size: 18px;
+  color: #555;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* ================= LAYOUT ================= */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* LEFT & RIGHT COLUMNS */
+.left, .right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ================= CENTER IMAGE AREA ================= */
+.centerContainer {
+  position: relative;
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.glowOrb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245, 130, 32, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.center {
+  position: relative;
+  z-index: 1;
+  will-change: transform;
+}
+
+.centerImg {
+  width: 100%;
+  max-width: 320px;
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.15));
+}
+
+/* ================= PREMIUM CARDS ================= */
+.card {
+  background: #0f4c3a; /* Deep Brand Green */
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 15px 30px rgba(15, 76, 58, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Hover Gradient Sweep */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f58220 0%, #d16b15 100%);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 40px rgba(245, 130, 32, 0.25);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.iconBox {
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  color: #f58220;
+  transition: all 0.4s ease;
+}
+
+.card:hover .iconBox {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: rotate(10deg);
+}
+
+.iconBox svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cardContent h4 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.cardContent p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.4s ease;
+}
+
+.card:hover .cardContent p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ================= BOTTOM CARD ================= */
+.bottomWrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.bottomCard {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .heading { font-size: 46px; }
+  .centerImg { max-width: 280px; }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .centerContainer {
+    order: -1; /* Puts the image at the top on mobile */
+    margin-bottom: 30px;
+  }
+  
+  .glowOrb {
+    width: 250px;
+    height: 250px;
+  }
+
+  .left, .right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading { font-size: 38px; }
+  .card { flex-direction: column; gap: 15px; }
+  .iconBox { width: 45px; height: 45px; }
+}
